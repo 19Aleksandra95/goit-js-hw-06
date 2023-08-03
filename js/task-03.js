@@ -14,22 +14,17 @@ const images = [
 ];
 
 
- const galleryListEl = document.querySelector("ul");
- const makeGallaryImg = galleryImg => {
-   return galleryImg.map(image => {
-  
-  const galleryItemEl = document.createElement("li");
-   galleryItemEl.classList.add("img-item");
+const list = document.querySelector(".gallery");
+const newElement = images
+  .map(
+    (element) =>
+      `<li><img class="picture" src=${element.url} width = '350' alt='${element.alt}'></img></li>`
+  )
+  .join("");
+list.insertAdjacentHTML("beforeend", newElement);
 
- const galleryImgEl = document.createElement("img");
-  galleryImgEl.src = image.url;
-     galleryImgEl.alt = image.alt;
-    galleryItemEl.appendChild(galleryImgEl);
-     console.log(galleryItemEl);
-   return galleryItemEl;
-
- });
-}
-
-const elements = makeGallaryImg(images);
- galleryListEl.append(...elements);
+list.style.listStyle = "none";
+list.style.display = "flex";
+list.style.gap = "10px";
+list.style.justifyContent = "center";
+list.style.alignItems = "center";

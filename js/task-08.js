@@ -1,22 +1,17 @@
-const formElement = document.querySelector(".login-form");
+const emailElement = document.querySelector(".login-form");
+emailElement.addEventListener("submit", emailElementSubmite);
+function emailElementSubmite(event) {
+  event.preventDefault();
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
 
-function checkSubmit(event){
+  if (email.value === "" || password.value === "") {
+    return alert("Please fill in all the fields!");
+  }
 
-    event.preventDefoult();
+  const userAcount = { email: email.value, password: password.value };
+  console.log("userAcount", userAcount);
 
-    const {
-        element: {email, password},
-    } = event.currentTarget;
-
-    if ( email.value === "" || password.value === "") {
-
-        return alert("Please fill in all fields")
-    }
-
-    const result = { email: email.value, password: password.value };
-  console.log(result);
   event.currentTarget.reset();
 }
-
-formElement.addEventListener("submit", checkSubmit);
-
